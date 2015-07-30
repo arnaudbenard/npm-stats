@@ -18,6 +18,7 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     var moduleDetails: [String] = [String]()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         var modules = ",".join(moduleNames)
         var url = "https://api.npmjs.org/downloads/point/last-month/\(modules)"
         
@@ -40,6 +41,10 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "My modules"
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moduleNames.count
     }
@@ -57,14 +62,15 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
         return cell
     }
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.performSegueWithIdentifier("showModuleDetail", sender: indexPath);
-//    }
-//
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        println("putan! \(sender?.description)")
-//        println("putan! \(sender?.identifier)")
-//
-//    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if let destinationViewController = segue.destinationViewController as? ModuleDetailViewController {
+            if let cell = sender as? UITableViewCell, text = cell.textLabel?.text {
+                destinationViewController.moduleName? = text
+            }
+        }
+
+    }
 
 }

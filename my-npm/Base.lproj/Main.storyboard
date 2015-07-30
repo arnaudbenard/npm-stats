@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Modules Table View Controller-->
+        <!--My modules-->
         <scene sceneID="HX1-Ft-qzM">
             <objects>
                 <tableViewController id="mfN-LT-MAh" customClass="ModulesTableViewController" customModule="my_npm" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,7 +42,7 @@
                             <outlet property="delegate" destination="mfN-LT-MAh" id="cdO-91-Vh1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="nbO-vD-Kra"/>
+                    <navigationItem key="navigationItem" title="My modules" id="nbO-vD-Kra"/>
                     <connections>
                         <outlet property="tableViewObject" destination="3JS-Il-Cad" id="514-UL-uwB"/>
                     </connections>
@@ -63,24 +63,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-25-6qb">
-                                <rect key="frame" x="279" y="72" width="53" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-25-6qb">
+                                <rect key="frame" x="274" y="72" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hjj-25-6qb" firstAttribute="centerX" secondItem="GhU-M4-6M5" secondAttribute="centerX" id="GpN-oD-xyU"/>
+                            <constraint firstItem="hjj-25-6qb" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="8" symbolic="YES" id="sEW-k2-lDT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ModuleDetailView" destination="GhU-M4-6M5" id="BK8-vx-wDf"/>
+                        <outlet property="moduleLabel" destination="hjj-25-6qb" id="DJv-8e-UJx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbK-ot-Jt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252" y="111"/>
+            <point key="canvasLocation" x="2330" y="111"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGE-nI-12p">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="13D-ZD-Hae" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oe8-e9-xkT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ycn-YK-DTg">
@@ -95,6 +102,7 @@
                         <segue destination="mfN-LT-MAh" kind="relationship" relationship="rootViewController" id="NTz-Zd-GXK"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="13D-ZD-Hae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="765" y="111"/>
         </scene>

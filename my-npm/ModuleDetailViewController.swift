@@ -10,4 +10,14 @@ import UIKit
 
 class ModuleDetailViewController: UIViewController {
 
+    @IBOutlet var ModuleDetailView: UIView!
+    
+    @IBOutlet weak var moduleLabel: UILabel!
+    
+    var moduleName: String? = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        moduleLabel.text = moduleName
+    }
 }
