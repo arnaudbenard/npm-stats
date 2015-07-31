@@ -94,7 +94,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

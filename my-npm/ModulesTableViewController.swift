@@ -16,28 +16,21 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     var moduleNames: [String] = ["elasto", "kue-ui", "hlcode", "gissues"]
     var moduleLabels: [String] = [String]()
     var moduleDetails: [String] = [String]()
-    
+    let npm = npmAPI()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        var modules = ",".join(moduleNames)
-        var url = "https://api.npmjs.org/downloads/point/last-month/\(modules)"
         
-        // Move to model
-        Alamofire.request(.GET, url).responseJSON { _, _, json, _ in
-            if let dict = json as? NSDictionary {
-                for (name, data) in dict {
-                    
-                    if let dataDict = data as? Dictionary<String, AnyObject>,
-                        downloads = dataDict["downloads"] as? Int,
-                        label = dataDict["package"] as? String {
-                            
-                        self.moduleLabels.append(label)
-                        self.moduleDetails.append("\(downloads)")
-                    }
+        npm.fetchModules(moduleNames) { dict, _ in
+            for (name, data) in dict! {
+                if let dataDict = data as? Dictionary<String, AnyObject>,
+                    downloads = dataDict["downloads"] as? Int,
+                    label = dataDict["package"] as? String {
+                    self.moduleLabels.append(label)
+                    self.moduleDetails.append("\(downloads)")
                 }
-                self.tableViewObject.reloadData()
             }
-    
+            self.tableViewObject.reloadData()
         }
     }
     
