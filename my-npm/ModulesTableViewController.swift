@@ -21,8 +21,8 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        npm.fetchModules(moduleNames) { dict, _ in
-            for (name, data) in dict! {
+        npm.fetchModules(moduleNames) { response, _ in
+            for (name, data) in response! {
                 if let dataDict = data as? Dictionary<String, AnyObject>,
                     downloads = dataDict["downloads"] as? Int,
                     label = dataDict["package"] as? String {

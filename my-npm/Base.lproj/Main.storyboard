@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oe8-e9-xkT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--My modules-->
@@ -64,20 +65,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-25-6qb">
-                                <rect key="frame" x="274" y="72" width="53" height="21"/>
+                                <rect key="frame" x="16" y="72" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15J-Fh-Mvr" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="101" width="568" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hjj-25-6qb" firstAttribute="centerX" secondItem="GhU-M4-6M5" secondAttribute="centerX" id="GpN-oD-xyU"/>
-                            <constraint firstItem="hjj-25-6qb" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="8" symbolic="YES" id="sEW-k2-lDT"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="top" secondItem="GhU-M4-6M5" secondAttribute="top" constant="101" id="6h6-ZT-aGP"/>
+                            <constraint firstAttribute="bottom" secondItem="15J-Fh-Mvr" secondAttribute="bottom" constant="20" symbolic="YES" id="IJP-cB-Qqs"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="leading" secondItem="hjj-25-6qb" secondAttribute="leading" id="Sjt-Cy-UxX"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="ZZZ-Yl-3hg"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="top" secondItem="hjj-25-6qb" secondAttribute="bottom" constant="8" symbolic="YES" id="cnu-sY-G5G"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="iLb-bD-AKx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ModuleDetailView" destination="GhU-M4-6M5" id="BK8-vx-wDf"/>
+                        <outlet property="chartView" destination="15J-Fh-Mvr" id="rlZ-wz-dux"/>
                         <outlet property="moduleLabel" destination="hjj-25-6qb" id="DJv-8e-UJx"/>
                     </connections>
                 </viewController>
@@ -94,7 +104,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
