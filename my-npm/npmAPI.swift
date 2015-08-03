@@ -25,12 +25,22 @@ class npmAPI {
         }
     }
     
+    func fetchModule(name: String, callback: (response: NSDictionary?, error: NSError?) -> Void) {
+        let url = "\(endpoint)/point/last-month/\(name)"
+        Alamofire.request(.GET, url).responseJSON { _, _, json, error in
+            if let dict = json as? NSDictionary {
+                callback(response: dict, error: nil)
+            } else {
+                callback(response: nil, error: error)
+            }
+        }
+    }
+    
     func fetchRange(name: String, start: String, end: String, callback: (response: NSArray?, error: NSError?) -> Void) {
         let range = "\(start):\(end)"
         let url = "\(endpoint)/range/\(range)/\(name)"
-        println("query \(url)")
+
         Alamofire.request(.GET, url).responseJSON { _, _, json, error in
-            println(json?.description)
             if let dict = json as? NSDictionary, downloads = dict["downloads"] as? NSArray {
                 callback(response: downloads, error: nil)
             } else {
