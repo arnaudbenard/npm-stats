@@ -26,10 +26,10 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
+        
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorView.startAnimating()
-
+        
         var moduleNames = userSettings.modules as! [String]
         npm.fetchModules(moduleNames) { response, _ in
             if let res = response {
@@ -67,15 +67,19 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
             let label = moduleLabels[indexPath.row]
             // remove the deleted item from the model
             self.userSettings.removeModule(label)
+            self.moduleLabels.removeAtIndex(indexPath.row)
+            self.moduleDetails.removeAtIndex(indexPath.row)
             // remove the deleted item from the `UITableView`
             self.tableViewObject.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         default:
             return
         }
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destinationViewController = segue.destinationViewController as? ModuleDetailViewController {
             if let cell = sender as? UITableViewCell, text = cell.textLabel?.text {
+                // set title of the detail view to module name
                 destinationViewController.moduleName = text
             }
         }
@@ -120,8 +124,8 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     private func addModuleToSettings(name: String) {
         npm.fetchModule(name) { response, _ in
             if let module = response as? Dictionary<String, AnyObject> {
-                self.userSettings.addModule(name)
                 self.appendRowData(module)
+                self.userSettings.addModule(name)
                 self.tableViewObject.reloadData()
                 println("Added \(self.userSettings.modules.description)")
             }
