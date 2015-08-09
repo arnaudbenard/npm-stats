@@ -30,7 +30,7 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
         activityIndicatorView.startAnimating()
         
         var moduleNames = userSettings.modules as! [String]
-        npm.fetchModules(moduleNames, period: npmAPI.Period.LastDay) { response, _ in
+        npm.fetchModules(moduleNames, period: .LastDay) { response, _ in
             if let res = response {
                 self.appendTableData(res)
                 self.tableViewObject.reloadData()
@@ -123,7 +123,7 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     }
     
     private func addModuleToSettings(name: String) {
-        npm.fetchModule(name, period: npmAPI.Period.LastDay) { response, _ in
+        npm.fetchModule(name, period: .LastDay) { response, _ in
             if let module = response as? Dictionary<String, AnyObject> {
                 self.appendRowData(module)
                 self.userSettings.addModule(name)

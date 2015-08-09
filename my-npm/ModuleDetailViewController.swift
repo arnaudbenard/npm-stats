@@ -134,19 +134,19 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     
     private func fetchGlobalStat(name: String) {
         // Get ready for the worst code I wrote. Yolo async -> Needs to be refactored with promises ASAP
-        npm.fetchModule(name, period: npmAPI.Period.LastMonth) { response, _ in
+        npm.fetchModule(name, period: .LastMonth) { response, _ in
             if let downloads = response!["downloads"] as? Double {
                 self.monthCountLabel.text = downloads.toDecimalStyle
             }
         }
         
-        npm.fetchModule(name, period: npmAPI.Period.LastWeek) { response, _ in
+        npm.fetchModule(name, period: .LastWeek) { response, _ in
             if let downloads = response!["downloads"] as? Double {
                 self.weekCountLabel.text = downloads.toDecimalStyle
             }
         }
         
-        npm.fetchModule(name, period: npmAPI.Period.LastDay) { response, _ in
+        npm.fetchModule(name, period: .LastDay) { response, _ in
             if let downloads = response!["downloads"] as? Double {
                 self.dayCountLabel.text = downloads.toDecimalStyle
             }
