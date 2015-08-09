@@ -95,9 +95,9 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     }
     
     private func appendRowData(data: Dictionary<String, AnyObject>) {
-        if let downloads = data["downloads"] as? Int, label = data["package"] as? String {
+        if let downloads = data["downloads"] as? Double, label = data["package"] as? String {
             self.moduleLabels.append(label)
-            self.moduleDetails.append("\(downloads)")
+            self.moduleDetails.append(downloads.toDecimalStyle)
         }
     }
     

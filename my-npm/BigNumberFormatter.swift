@@ -9,6 +9,7 @@
 import Foundation
 
 class BigNumberFormatter: NSNumberFormatter {
+    
     override func stringFromNumber(number: NSNumber) -> String? {
         
         let formatString = { String(format: "%g", $0) }

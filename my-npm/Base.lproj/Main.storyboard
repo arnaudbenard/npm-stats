@@ -2,7 +2,20 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oe8-e9-xkT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SourceSansPro-Bold.otf">
+            <string>SourceSansPro-Bold</string>
+            <string>SourceSansPro-Bold</string>
+            <string>SourceSansPro-Bold</string>
+        </mutableArray>
+        <mutableArray key="SourceSansPro-Regular.otf">
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Modules Table View Controller-->
         <scene sceneID="HX1-Ft-qzM">
@@ -47,7 +60,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="nbO-vD-Kra">
-                        <barButtonItem key="rightBarButtonItem" title="+" systemItem="add" id="Mzg-Sn-Uad">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Mzg-Sn-Uad">
                             <connections>
                                 <action selector="addModule:" destination="mfN-LT-MAh" id="yId-hd-sOp"/>
                             </connections>
@@ -74,23 +87,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-Hf-50R">
+                                <rect key="frame" x="16" y="59" width="100" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="F2R-6A-l6W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scl-6Z-HDv">
+                                <rect key="frame" x="250" y="59" width="100" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ENy-NO-FG8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZKK-m0-iVj">
+                                <rect key="frame" x="16" y="30" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9pA-BI-5tX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZB4-o9-ol1">
+                                <rect key="frame" x="250" y="30" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Pav-fl-Iew"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iR-H7-cX0">
+                                <rect key="frame" x="484" y="30" width="100" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2Zy-q2-XkR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6On-6L-cYg">
+                                <rect key="frame" x="484" y="59" width="100" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9ON-6t-mee"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15J-Fh-Mvr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="150" width="600" height="386"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="114" width="568" height="402"/>
+                                <color key="backgroundColor" red="0.3411764705882353" green="0.66666666666666663" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3411764706" green="0.66666666669999997" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="bottom" secondItem="iUT-GI-zWJ" secondAttribute="top" id="A8J-p7-3ID"/>
-                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="150" id="Ucf-Ik-vif"/>
-                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leading" id="puA-KL-6GS"/>
-                            <constraint firstAttribute="trailing" secondItem="15J-Fh-Mvr" secondAttribute="trailing" id="tYj-Yg-2yK"/>
+                            <constraint firstItem="Ldb-Hf-50R" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="59" id="1RY-g2-kDh"/>
+                            <constraint firstItem="Ldb-Hf-50R" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="2za-81-OrG"/>
+                            <constraint firstAttribute="centerX" secondItem="ZB4-o9-ol1" secondAttribute="centerX" constant="-0.5" id="49l-Sr-93S"/>
+                            <constraint firstAttribute="centerX" secondItem="Scl-6Z-HDv" secondAttribute="centerX" id="8F5-aX-WJx"/>
+                            <constraint firstItem="8iR-H7-cX0" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="30" id="8Ke-Ny-JLC"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="114" id="Efu-3p-Ei5"/>
+                            <constraint firstItem="ZKK-m0-iVj" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="30" id="IKa-Wg-gRG"/>
+                            <constraint firstItem="Scl-6Z-HDv" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="59" id="M56-v7-7Oz"/>
+                            <constraint firstItem="6On-6L-cYg" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="59" id="M5l-8g-gd7"/>
+                            <constraint firstItem="ZKK-m0-iVj" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="M8U-xY-ukz"/>
+                            <constraint firstItem="8iR-H7-cX0" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="UEQ-Hv-4rY"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="aSW-lK-XBx"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="cwQ-cL-fpc"/>
+                            <constraint firstItem="iUT-GI-zWJ" firstAttribute="top" secondItem="15J-Fh-Mvr" secondAttribute="bottom" constant="20" id="jKo-Ih-cwo"/>
+                            <constraint firstItem="6On-6L-cYg" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="l2A-gf-ZfZ"/>
+                            <constraint firstItem="ZB4-o9-ol1" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="30" id="vCq-uT-cXE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ModuleDetailView" destination="GhU-M4-6M5" id="BK8-vx-wDf"/>
                         <outlet property="chartView" destination="15J-Fh-Mvr" id="rlZ-wz-dux"/>
+                        <outlet property="dayCountLabel" destination="8iR-H7-cX0" id="4h7-ZK-glN"/>
+                        <outlet property="monthCountLabel" destination="ZKK-m0-iVj" id="L3L-Mg-CTQ"/>
+                        <outlet property="weekCountLabel" destination="ZB4-o9-ol1" id="r32-OT-4z3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbK-ot-Jt4" userLabel="First Responder" sceneMemberID="firstResponder"/>

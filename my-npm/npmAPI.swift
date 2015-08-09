@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-class npmAPI {
+public class npmAPI {
     
-    enum Period: String {
+    public enum Period: String {
         case LastDay = "last-day"
         case LastWeek = "last-week"
         case LastMonth = "last-month"

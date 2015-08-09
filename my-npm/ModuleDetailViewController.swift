@@ -14,15 +14,17 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     @IBOutlet var ModuleDetailView: UIView!
     @IBOutlet weak var chartView: LineChartView!
 
+    @IBOutlet weak var monthCountLabel: UILabel!
+    @IBOutlet weak var weekCountLabel: UILabel!
+    @IBOutlet weak var dayCountLabel: UILabel!
+    
     let npm = npmAPI()
 
     var moduleName: String = ""
 
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var days: [String] = [String]()
     var downloads: [Double] = [Double]()
 
-    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
     var dataEntries: [ChartDataEntry] = []
 
     override func viewDidLoad() {
@@ -34,15 +36,12 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
         }
         
         self.fetchGraphData(moduleName)
+        self.fetchGlobalStat(moduleName)
         
         chartView.delegate = self;
+        chartView.descriptionText = "";
         chartView.noDataTextDescription = "Data will be loaded soon."
-        chartView.drawGridBackgroundEnabled = false
-        
-        let yAxisRight = chartView.getAxis(ChartYAxis.AxisDependency.Right)
-        yAxisRight.drawLabelsEnabled = false
-        let yAxisLeft = chartView.getAxis(ChartYAxis.AxisDependency.Left)
-        yAxisLeft.valueFormatter = BigNumberFormatter()
+        chartView.drawGridBackgroundEnabled = false // remove gray bg
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,33 +50,73 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     
     private func setData(xAxis: [String], yAxis: [Double]) {
         
-  
-        
         for i in 0..<yAxis.count {
             let dataEntry = ChartDataEntry(value: yAxis[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
         
         let blueColor = UIColor(red:0.34, green:0.72, blue:1.00, alpha:1.0)
-        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Downloads")
-        chartDataSet.cubicIntensity = 0.2
+        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Downloads per day")
+        
+        // line graph style
+        chartDataSet.cubicIntensity = 0.05
         chartDataSet.drawCubicEnabled = true
         chartDataSet.drawCircleHoleEnabled = false
         chartDataSet.circleRadius = CGFloat(0.0)
-        chartDataSet.fillAlpha = 65/255.0
-        chartDataSet.fillColor = UIColor.redColor()
-        chartDataSet.setColor(blueColor)
-
-
+        chartDataSet.setColor(UIColor.whiteColor())
+        chartDataSet.highlightEnabled = false
+        chartDataSet.lineWidth = 1.5
+        chartDataSet.drawValuesEnabled = false
         
         let chartData = LineChartData(xVals: xAxis, dataSet: chartDataSet)
         chartView.data = chartData
         
+        // Hide label on the right
+        let yAxisRight = chartView.getAxis(ChartYAxis.AxisDependency.Right)
+        yAxisRight.drawLabelsEnabled = false
+        yAxisRight.drawGridLinesEnabled = false
+        yAxisRight.drawAxisLineEnabled = false
+        
+        // Format Y axis labels
+        let yAxisLeft = chartView.getAxis(ChartYAxis.AxisDependency.Left)
+        yAxisLeft.valueFormatter = BigNumberFormatter()
+        yAxisLeft.drawGridLinesEnabled = false
+        
+        chartView.drawBordersEnabled = false
+
         chartView.leftAxis.customAxisMin = max(0.0, chartView.data!.yMin - 1.0)
         chartView.leftAxis.customAxisMax = chartView.data!.yMax + 1.0
-        chartView.leftAxis.labelCount = 5
+        chartView.leftAxis.labelCount = 6
         chartView.leftAxis.startAtZeroEnabled = false
-        chartView.leftAxis.drawGridLinesEnabled = false
+        chartView.leftAxis.drawGridLinesEnabled = true
+        chartView.leftAxis.gridColor = UIColor.whiteColor()
+        
+        let smallFont = UIFont(name: "HelveticaNeue-Light" , size: 10)!
+        chartView.leftAxis.labelFont = smallFont
+        chartView.leftAxis.labelTextColor = UIColor.whiteColor()
+        chartView.leftAxis.drawAxisLineEnabled = false
+
+        chartView.xAxis.labelFont = smallFont
+        chartView.xAxis.labelPosition = .Bottom
+        chartView.xAxis.gridColor = UIColor.whiteColor()
+        chartView.xAxis.labelTextColor = UIColor.whiteColor()
+        chartView.xAxis.avoidFirstLastClippingEnabled = true
+        chartView.xAxis.drawAxisLineEnabled = false
+
+    }
+    
+    private func formatDayLabel(day: String) -> String {
+        // Format from npm api: YYYY-MM-DD
+        let toDateFormatter = NSDateFormatter()
+        toDateFormatter.dateFormat = "YYYY-MM-dd"
+
+        // String to date
+        let dayDate = toDateFormatter.dateFromString(day)!
+
+        let labelFormatter = NSDateFormatter()
+        labelFormatter.dateFormat = "d MMM yyyy"
+        let dateFormatted = labelFormatter.stringFromDate(dayDate)
+        return dateFormatted
     }
     
     private func fetchGraphData(name: String) {
@@ -85,11 +124,32 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
             for data in response! {
                 if let dls = data["downloads"] as? Double, let day = data["day"] as? String {
                     self.downloads.append(dls)
-                    self.days.append(day)
+                    self.days.append(self.formatDayLabel(day))
                 }
             }
             self.setData(self.days, yAxis: self.downloads)
             self.chartView.setNeedsDisplay()
+        }
+    }
+    
+    private func fetchGlobalStat(name: String) {
+        // Get ready for the worst code I wrote. Yolo async -> Needs to be refactored with promises ASAP
+        npm.fetchModule(name, period: npmAPI.Period.LastMonth) { response, _ in
+            if let downloads = response!["downloads"] as? Double {
+                self.monthCountLabel.text = downloads.toDecimalStyle
+            }
+        }
+        
+        npm.fetchModule(name, period: npmAPI.Period.LastWeek) { response, _ in
+            if let downloads = response!["downloads"] as? Double {
+                self.weekCountLabel.text = downloads.toDecimalStyle
+            }
+        }
+        
+        npm.fetchModule(name, period: npmAPI.Period.LastDay) { response, _ in
+            if let downloads = response!["downloads"] as? Double {
+                self.dayCountLabel.text = downloads.toDecimalStyle
+            }
         }
     }
 }
