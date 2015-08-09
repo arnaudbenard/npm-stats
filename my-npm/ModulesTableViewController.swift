@@ -25,13 +25,12 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorView.startAnimating()
         
         var moduleNames = userSettings.modules as! [String]
-        npm.fetchModules(moduleNames) { response, _ in
+        npm.fetchModules(moduleNames, period: npmAPI.Period.LastDay) { response, _ in
             if let res = response {
                 self.appendTableData(res)
                 self.tableViewObject.reloadData()
@@ -50,13 +49,15 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-        
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.detailTextLabel?.textColor = UIColor.grayColor()
+
         if moduleLabels.count > indexPath.row {
             cell.textLabel?.text = moduleLabels[indexPath.row]
         }
         
         if moduleDetails.count > indexPath.row {
-            cell.detailTextLabel?.text = moduleDetails[indexPath.row]
+            cell.detailTextLabel?.text = "Last day: \(moduleDetails[indexPath.row]) downloads"
         }
         return cell
     }
@@ -122,7 +123,7 @@ class ModulesTableViewController: UITableViewController, UITableViewDelegate, UI
     }
     
     private func addModuleToSettings(name: String) {
-        npm.fetchModule(name) { response, _ in
+        npm.fetchModule(name, period: npmAPI.Period.LastDay) { response, _ in
             if let module = response as? Dictionary<String, AnyObject> {
                 self.appendRowData(module)
                 self.userSettings.addModule(name)

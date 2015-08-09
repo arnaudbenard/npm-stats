@@ -11,11 +11,17 @@ import Alamofire
 
 class npmAPI {
     
+    enum Period: String {
+        case LastDay = "last-day"
+        case LastWeek = "last-week"
+        case LastMonth = "last-month"
+    }
+    
     let endpoint = "https://api.npmjs.org/downloads"
     
-    func fetchModules(names: [String], callback: (response: NSDictionary?, error: NSError?) -> Void) {
+    func fetchModules(names: [String], period: Period, callback: (response: NSDictionary?, error: NSError?) -> Void) {
         let modules = ",".join(names)
-        let url = "\(endpoint)/point/last-month/\(modules)"
+        let url = "\(endpoint)/point/\(period.rawValue)/\(modules)"
         Alamofire.request(.GET, url).responseJSON { _, _, json, error in
             if let dict = json as? NSDictionary {
                 callback(response: dict, error: nil)
@@ -25,8 +31,8 @@ class npmAPI {
         }
     }
     
-    func fetchModule(name: String, callback: (response: NSDictionary?, error: NSError?) -> Void) {
-        let url = "\(endpoint)/point/last-month/\(name)"
+    func fetchModule(name: String, period: Period, callback: (response: NSDictionary?, error: NSError?) -> Void) {
+        let url = "\(endpoint)/point/\(period.rawValue)/\(name)"
         Alamofire.request(.GET, url).responseJSON { _, _, json, error in
             if let dict = json as? NSDictionary {
                 callback(response: dict, error: nil)

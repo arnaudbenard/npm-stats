@@ -13,7 +13,6 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet var ModuleDetailView: UIView!
     @IBOutlet weak var chartView: LineChartView!
-    @IBOutlet weak var moduleLabel: UILabel!
 
     let npm = npmAPI()
 
@@ -28,20 +27,22 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         // Invalid module name
         if count(moduleName) == 0 {
             return
         }
         
         self.fetchGraphData(moduleName)
-        moduleLabel.text = moduleName
         
         chartView.delegate = self;
-        chartView.descriptionText = "";
         chartView.noDataTextDescription = "Data will be loaded soon."
+        chartView.drawGridBackgroundEnabled = false
         
-        setData(months, yAxis: unitsSold)
+        let yAxisRight = chartView.getAxis(ChartYAxis.AxisDependency.Right)
+        yAxisRight.drawLabelsEnabled = false
+        let yAxisLeft = chartView.getAxis(ChartYAxis.AxisDependency.Left)
+        yAxisLeft.valueFormatter = BigNumberFormatter()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -50,14 +51,33 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     
     private func setData(xAxis: [String], yAxis: [Double]) {
         
+  
+        
         for i in 0..<yAxis.count {
             let dataEntry = ChartDataEntry(value: yAxis[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
         
+        let blueColor = UIColor(red:0.34, green:0.72, blue:1.00, alpha:1.0)
         let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Downloads")
+        chartDataSet.cubicIntensity = 0.2
+        chartDataSet.drawCubicEnabled = true
+        chartDataSet.drawCircleHoleEnabled = false
+        chartDataSet.circleRadius = CGFloat(0.0)
+        chartDataSet.fillAlpha = 65/255.0
+        chartDataSet.fillColor = UIColor.redColor()
+        chartDataSet.setColor(blueColor)
+
+
+        
         let chartData = LineChartData(xVals: xAxis, dataSet: chartDataSet)
         chartView.data = chartData
+        
+        chartView.leftAxis.customAxisMin = max(0.0, chartView.data!.yMin - 1.0)
+        chartView.leftAxis.customAxisMax = chartView.data!.yMax + 1.0
+        chartView.leftAxis.labelCount = 5
+        chartView.leftAxis.startAtZeroEnabled = false
+        chartView.leftAxis.drawGridLinesEnabled = false
     }
     
     private func fetchGraphData(name: String) {
