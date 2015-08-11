@@ -49,9 +49,14 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     }
     
     private func setData(xAxis: [String], yAxis: [Double]) {
+        var chartDataY = yAxis
+        if yAxis.count > 100 {
+//            chartDataY = LowPassFilter(alpha: 1/28).apply(yAxis)
+//            chartDataY = MovingAverageFilter(period: 5).compute(yAxis)
+        }
         
-        for i in 0..<yAxis.count {
-            let dataEntry = ChartDataEntry(value: yAxis[i], xIndex: i)
+        for i in 0..<chartDataY.count {
+            let dataEntry = ChartDataEntry(value: chartDataY[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
         
@@ -65,7 +70,7 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
         chartDataSet.circleRadius = CGFloat(0.0)
         chartDataSet.setColor(UIColor.whiteColor())
         chartDataSet.highlightEnabled = false
-        chartDataSet.lineWidth = 1.5
+        chartDataSet.lineWidth = 1
         chartDataSet.drawValuesEnabled = false
         
         let chartData = LineChartData(xVals: xAxis, dataSet: chartDataSet)
@@ -120,11 +125,12 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     }
     
     private func fetchGraphData(name: String) {
-        npm.fetchRange(name, start: "2015-01-04", end: "2015-08-04") { response, _ in
+        npm.fetchRange(name, start: "2013-01-04", end: "2015-08-04") { response, _ in
             for data in response! {
                 if let dls = data["downloads"] as? Double, let day = data["day"] as? String {
                     self.downloads.append(dls)
                     self.days.append(self.formatDayLabel(day))
+
                 }
             }
             self.setData(self.days, yAxis: self.downloads)
@@ -152,4 +158,5 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
             }
         }
     }
+    
 }

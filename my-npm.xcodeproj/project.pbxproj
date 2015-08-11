@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4546C249DBA1714518388179 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB60B5A5D0A7A5AE32BD2F70 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F91F7E7E1B6FFC0000A4BB96 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F7E7D1B6FFC0000A4BB96 /* UserSettings.swift */; };
+		F95BA1081B790A5A00863D87 /* LowPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA1071B790A5A00863D87 /* LowPassFilter.swift */; };
+		F95BA10D1B79371300863D87 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA10C1B79371300863D87 /* MovingAverageFilter.swift */; };
 		F97A41161B77DA150030CDC4 /* BigNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A41151B77DA150030CDC4 /* BigNumberFormatter.swift */; };
 		F97A411C1B77FD8D0030CDC4 /* DecimalNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A411B1B77FD8D0030CDC4 /* DecimalNumberExtension.swift */; };
 		F97A41291B7800760030CDC4 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F97A41261B77FFDD0030CDC4 /* SourceSansPro-Regular.otf */; };
@@ -38,6 +40,8 @@
 		3A1B846961BAE06CC5C95BB1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DB60B5A5D0A7A5AE32BD2F70 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91F7E7D1B6FFC0000A4BB96 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		F95BA1071B790A5A00863D87 /* LowPassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowPassFilter.swift; sourceTree = "<group>"; };
+		F95BA10C1B79371300863D87 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
 		F97A41151B77DA150030CDC4 /* BigNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigNumberFormatter.swift; sourceTree = "<group>"; };
 		F97A411B1B77FD8D0030CDC4 /* DecimalNumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalNumberExtension.swift; sourceTree = "<group>"; };
 		F97A41261B77FFDD0030CDC4 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
@@ -92,6 +96,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F95BA1091B790A6200863D87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F97A41151B77DA150030CDC4 /* BigNumberFormatter.swift */,
+				F97A411B1B77FD8D0030CDC4 /* DecimalNumberExtension.swift */,
+				F95BA1071B790A5A00863D87 /* LowPassFilter.swift */,
+				F95BA10C1B79371300863D87 /* MovingAverageFilter.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		F95BA10A1B790A7300863D87 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F99665EC1B680ACA0091E291 /* ModulesTableViewController.swift */,
+				F9A164FA1B68268B00B93803 /* ModuleDetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F95BA10B1B790A8700863D87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F99665EE1B680FD40091E291 /* npmAPI.swift */,
+				F91F7E7D1B6FFC0000A4BB96 /* UserSettings.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		F99665BE1B6807B10091E291 = {
 			isa = PBXGroup;
 			children = (
@@ -115,14 +148,11 @@
 		F99665C91B6807B10091E291 /* my-npm */ = {
 			isa = PBXGroup;
 			children = (
-				F99665EC1B680ACA0091E291 /* ModulesTableViewController.swift */,
-				F97A411B1B77FD8D0030CDC4 /* DecimalNumberExtension.swift */,
+				F95BA10B1B790A8700863D87 /* Models */,
+				F95BA10A1B790A7300863D87 /* ViewControllers */,
+				F95BA1091B790A6200863D87 /* Helpers */,
 				F99665D01B6807B10091E291 /* Main.storyboard */,
-				F91F7E7D1B6FFC0000A4BB96 /* UserSettings.swift */,
-				F9A164FA1B68268B00B93803 /* ModuleDetailViewController.swift */,
 				F99665CA1B6807B10091E291 /* Supporting Files */,
-				F99665EE1B680FD40091E291 /* npmAPI.swift */,
-				F97A41151B77DA150030CDC4 /* BigNumberFormatter.swift */,
 			);
 			path = "my-npm";
 			sourceTree = "<group>";
@@ -312,9 +342,11 @@
 			files = (
 				F97A411C1B77FD8D0030CDC4 /* DecimalNumberExtension.swift in Sources */,
 				F99665EF1B680FD40091E291 /* npmAPI.swift in Sources */,
+				F95BA10D1B79371300863D87 /* MovingAverageFilter.swift in Sources */,
 				F99665ED1B680ACA0091E291 /* ModulesTableViewController.swift in Sources */,
 				F9A164FB1B68268B00B93803 /* ModuleDetailViewController.swift in Sources */,
 				F91F7E7E1B6FFC0000A4BB96 /* UserSettings.swift in Sources */,
+				F95BA1081B790A5A00863D87 /* LowPassFilter.swift in Sources */,
 				F97A41161B77DA150030CDC4 /* BigNumberFormatter.swift in Sources */,
 				F99665CD1B6807B10091E291 /* AppDelegate.swift in Sources */,
 			);
