@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="width" constant="100" id="F2R-6A-l6W"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scl-6Z-HDv">
@@ -102,7 +102,7 @@
                                     <constraint firstAttribute="width" constant="100" id="ENy-NO-FG8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZKK-m0-iVj">
@@ -111,7 +111,6 @@
                                     <constraint firstAttribute="width" constant="100" id="9pA-BI-5tX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZB4-o9-ol1">
@@ -120,7 +119,6 @@
                                     <constraint firstAttribute="width" constant="100" id="Pav-fl-Iew"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iR-H7-cX0">
@@ -129,7 +127,6 @@
                                     <constraint firstAttribute="width" constant="100" id="2Zy-q2-XkR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6On-6L-cYg">
@@ -138,32 +135,32 @@
                                     <constraint firstAttribute="width" constant="100" id="9ON-6t-mee"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15J-Fh-Mvr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="114" width="568" height="402"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="422"/>
                                 <color key="backgroundColor" red="0.3411764705882353" green="0.66666666666666663" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.3411764706" green="0.66666666669999997" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ldb-Hf-50R" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="59" id="1RY-g2-kDh"/>
                             <constraint firstItem="Ldb-Hf-50R" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="2za-81-OrG"/>
                             <constraint firstAttribute="centerX" secondItem="ZB4-o9-ol1" secondAttribute="centerX" constant="-0.5" id="49l-Sr-93S"/>
                             <constraint firstAttribute="centerX" secondItem="Scl-6Z-HDv" secondAttribute="centerX" id="8F5-aX-WJx"/>
                             <constraint firstItem="8iR-H7-cX0" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="30" id="8Ke-Ny-JLC"/>
-                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="114" id="Efu-3p-Ei5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="15J-Fh-Mvr" secondAttribute="trailing" constant="-16" id="CYg-Qp-hMI"/>
                             <constraint firstItem="ZKK-m0-iVj" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="30" id="IKa-Wg-gRG"/>
                             <constraint firstItem="Scl-6Z-HDv" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="59" id="M56-v7-7Oz"/>
                             <constraint firstItem="6On-6L-cYg" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="59" id="M5l-8g-gd7"/>
                             <constraint firstItem="ZKK-m0-iVj" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="M8U-xY-ukz"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="114" id="Rea-mR-mDq"/>
                             <constraint firstItem="8iR-H7-cX0" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="UEQ-Hv-4rY"/>
-                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" id="aSW-lK-XBx"/>
-                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="cwQ-cL-fpc"/>
-                            <constraint firstItem="iUT-GI-zWJ" firstAttribute="top" secondItem="15J-Fh-Mvr" secondAttribute="bottom" constant="20" id="jKo-Ih-cwo"/>
+                            <constraint firstItem="iUT-GI-zWJ" firstAttribute="top" secondItem="15J-Fh-Mvr" secondAttribute="bottom" id="WDH-Tr-YLm"/>
                             <constraint firstItem="6On-6L-cYg" firstAttribute="trailing" secondItem="GhU-M4-6M5" secondAttribute="trailingMargin" id="l2A-gf-ZfZ"/>
+                            <constraint firstItem="15J-Fh-Mvr" firstAttribute="leading" secondItem="GhU-M4-6M5" secondAttribute="leadingMargin" constant="-16" id="tRt-AG-5yY"/>
                             <constraint firstItem="ZB4-o9-ol1" firstAttribute="top" secondItem="Wqm-qT-V2e" secondAttribute="bottom" constant="30" id="vCq-uT-cXE"/>
                         </constraints>
                     </view>

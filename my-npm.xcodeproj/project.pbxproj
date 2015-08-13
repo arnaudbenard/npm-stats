@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4546C249DBA1714518388179 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB60B5A5D0A7A5AE32BD2F70 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F9006C501B7D1E85007AB64E /* ExternalLink.png in Resources */ = {isa = PBXBuildFile; fileRef = F9006C4F1B7D1E85007AB64E /* ExternalLink.png */; };
+		F9006C521B7D1F82007AB64E /* Download-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F9006C511B7D1F82007AB64E /* Download-32.png */; };
 		F91F7E7E1B6FFC0000A4BB96 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F7E7D1B6FFC0000A4BB96 /* UserSettings.swift */; };
 		F95BA1081B790A5A00863D87 /* LowPassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA1071B790A5A00863D87 /* LowPassFilter.swift */; };
 		F95BA10D1B79371300863D87 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA10C1B79371300863D87 /* MovingAverageFilter.swift */; };
@@ -39,6 +41,8 @@
 		01A18D70AE04CEB08C8A5C39 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3A1B846961BAE06CC5C95BB1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DB60B5A5D0A7A5AE32BD2F70 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9006C4F1B7D1E85007AB64E /* ExternalLink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExternalLink.png; sourceTree = "<group>"; };
+		F9006C511B7D1F82007AB64E /* Download-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download-32.png"; sourceTree = "<group>"; };
 		F91F7E7D1B6FFC0000A4BB96 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F95BA1071B790A5A00863D87 /* LowPassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowPassFilter.swift; sourceTree = "<group>"; };
 		F95BA10C1B79371300863D87 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
@@ -160,7 +164,9 @@
 		F99665CA1B6807B10091E291 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F9006C4F1B7D1E85007AB64E /* ExternalLink.png */,
 				F97A412A1B7801C60030CDC4 /* SourceSansPro-Bold.otf */,
+				F9006C511B7D1F82007AB64E /* Download-32.png */,
 				F97A41261B77FFDD0030CDC4 /* SourceSansPro-Regular.otf */,
 				F99665CC1B6807B10091E291 /* AppDelegate.swift */,
 				F99665D31B6807B10091E291 /* Images.xcassets */,
@@ -274,6 +280,8 @@
 				F99665D71B6807B10091E291 /* LaunchScreen.xib in Resources */,
 				F99665D41B6807B10091E291 /* Images.xcassets in Resources */,
 				F97A412B1B7801D90030CDC4 /* SourceSansPro-Bold.otf in Resources */,
+				F9006C501B7D1E85007AB64E /* ExternalLink.png in Resources */,
+				F9006C521B7D1F82007AB64E /* Download-32.png in Resources */,
 				F97A41291B7800760030CDC4 /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

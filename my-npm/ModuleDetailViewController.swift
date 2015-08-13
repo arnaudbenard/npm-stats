@@ -19,6 +19,7 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var dayCountLabel: UILabel!
     
     let npm = npmAPI()
+    let blueColor = UIColor(red:0.34, green:0.72, blue:1.00, alpha:1.0)
 
     var moduleName: String = ""
 
@@ -41,11 +42,32 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
         chartView.delegate = self;
         chartView.descriptionText = "";
         chartView.noDataTextDescription = "Data will be loaded soon."
+        chartView.noDataText = ""
+        chartView.infoTextColor = UIColor.whiteColor()
         chartView.drawGridBackgroundEnabled = false // remove gray bg
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = moduleName
+
+    }
+
+    func chartTranslated(chartViewBase: ChartViewBase, dX: CGFloat, dY: CGFloat) {
+//        updateRangeLabels()
+    }
+    
+    func chartScaled(chartView: ChartViewBase, scaleX: CGFloat, scaleY: CGFloat) {
+//        updateRangeLabels()
+    }
+
+    private func updateRangeLabels() {
+        let lowestVisibleXIndex = chartView.lowestVisibleXIndex
+        let lowestVisibleXLabel = chartView.getXValue(lowestVisibleXIndex)
+        let highestVisibleXIndex = chartView.highestVisibleXIndex
+        let highestVisibleXLabel = chartView.getXValue(highestVisibleXIndex)
+
+        println("alallala \(lowestVisibleXLabel)")
     }
     
     private func setData(xAxis: [String], yAxis: [Double]) {
@@ -60,7 +82,6 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
             dataEntries.append(dataEntry)
         }
         
-        let blueColor = UIColor(red:0.34, green:0.72, blue:1.00, alpha:1.0)
         let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Downloads per day")
         
         // line graph style
@@ -130,7 +151,6 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
                 if let dls = data["downloads"] as? Double, let day = data["day"] as? String {
                     self.downloads.append(dls)
                     self.days.append(self.formatDayLabel(day))
-
                 }
             }
             self.setData(self.days, yAxis: self.downloads)
