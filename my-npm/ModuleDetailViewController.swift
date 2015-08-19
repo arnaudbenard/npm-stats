@@ -45,6 +45,11 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
         chartView.noDataText = ""
         chartView.infoTextColor = UIColor.whiteColor()
         chartView.drawGridBackgroundEnabled = false // remove gray bg
+        // lagging when there're a lot of data points
+        chartView.pinchZoomEnabled = false
+        chartView.doubleTapToZoomEnabled = false
+        chartView.scaleXEnabled = false
+        chartView.scaleYEnabled = false
     }
     
     
@@ -52,30 +57,9 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
         self.navigationController?.navigationBar.topItem?.title = moduleName
 
     }
-
-    func chartTranslated(chartViewBase: ChartViewBase, dX: CGFloat, dY: CGFloat) {
-//        updateRangeLabels()
-    }
-    
-    func chartScaled(chartView: ChartViewBase, scaleX: CGFloat, scaleY: CGFloat) {
-//        updateRangeLabels()
-    }
-
-    private func updateRangeLabels() {
-        let lowestVisibleXIndex = chartView.lowestVisibleXIndex
-        let lowestVisibleXLabel = chartView.getXValue(lowestVisibleXIndex)
-        let highestVisibleXIndex = chartView.highestVisibleXIndex
-        let highestVisibleXLabel = chartView.getXValue(highestVisibleXIndex)
-
-        println("alallala \(lowestVisibleXLabel)")
-    }
     
     private func setData(xAxis: [String], yAxis: [Double]) {
         var chartDataY = yAxis
-        if yAxis.count > 100 {
-//            chartDataY = LowPassFilter(alpha: 1/28).apply(yAxis)
-//            chartDataY = MovingAverageFilter(period: 5).compute(yAxis)
-        }
         
         for i in 0..<chartDataY.count {
             let dataEntry = ChartDataEntry(value: chartDataY[i], xIndex: i)
@@ -145,16 +129,33 @@ class ModuleDetailViewController: UIViewController, ChartViewDelegate {
         return dateFormatted
     }
     
+    private func getCurrentDateAsString() -> String {
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+
+        let toStringFormatter = NSDateFormatter()
+        toStringFormatter.dateFormat = "YYYY-MM-dd"
+        let dateFormatted = toStringFormatter.stringFromDate(date)
+        return dateFormatted
+
+    }
+    
     private func fetchGraphData(name: String) {
-        npm.fetchRange(name, start: "2013-01-04", end: "2015-08-04") { response, _ in
-            for data in response! {
-                if let dls = data["downloads"] as? Double, let day = data["day"] as? String {
-                    self.downloads.append(dls)
-                    self.days.append(self.formatDayLabel(day))
+        let today = getCurrentDateAsString()
+        
+        npm.fetchRange(name, start: "2013-01-04", end: today) { response, _ in
+            
+            if let range = response {
+                for data in range {
+                    if let dls = data["downloads"] as? Double, let day = data["day"] as? String {
+                        self.downloads.append(dls)
+                        self.days.append(self.formatDayLabel(day))
+                    }
                 }
+                self.setData(self.days, yAxis: self.downloads)
+                self.chartView.setNeedsDisplay()
             }
-            self.setData(self.days, yAxis: self.downloads)
-            self.chartView.setNeedsDisplay()
+
         }
     }
     
