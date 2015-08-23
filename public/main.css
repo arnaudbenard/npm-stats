@@ -2,6 +2,12 @@ body {
     margin-top: 135px;
 }
 
+@media (max-width: 40em) {
+    body {
+        margin-top: 30px;
+    }
+}
+
 .container {
     padding: 0 1rem;
 }
@@ -14,10 +20,23 @@ body {
     font-weight: 400;
 }
 
+@media (max-width: 40em) {
+    .h1 {
+        font-size: 1.6rem;
+    }
+}
+
 .h2 {
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 2.3rem;
+    max-width: 400px;
+}
+
+@media (max-width: 40em) {
+    .h2 {
+        margin-bottom: 3rem;
+    }
 }
 
 .h3 {
@@ -28,6 +47,12 @@ body {
     font-size: 1.3rem;
     font-weight: 300;
     line-height: 2.1rem;
+}
+
+@media (max-width: 40em) {
+    .p-container {
+        width: 90%;
+    }
 }
 
 /* Image */
@@ -64,6 +89,14 @@ body {
     height: 75px;
     background-size: cover;
 }
+
+@media (max-width: 40em) {
+    .appicon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 
 .ribbon {
     background: rgb(247,107,28); /* Old browsers */
