@@ -1,3 +1,7 @@
+body {
+    margin-top: 135px;
+}
+
 .container {
     padding: 0 1rem;
 }
@@ -5,8 +9,8 @@
 /* Titles */
 .h1 {
     font-size: 4.0rem;
-    margin-top: 100px;
-    margin-bottom: 20px;
+    margin: 0;
+    font-weight: 400;
 }
 
 .h2 {
@@ -22,15 +26,15 @@
 .p {
     font-size: 1.3rem;
     font-weight: 300;
+    line-height: 2.1rem;
 }
 
 /* Image */
 .appstore-badge {
-    background: url('appstore.svg');
+    background: url('appstorewhite.png');
     width: 270px;
     height: 80px;
     background-size: cover;
-    margin: 100px 0;
 }
 
 .github {
@@ -51,7 +55,6 @@
     background: url('preview.png');
     width: 351px;
     height: 451px;
-    margin-left: auto;
 }
 
 .appicon {
@@ -59,12 +62,9 @@
     width: 100px;
     height: 100px;
     background-size: cover;
-    margin: 0 auto 100px auto;
 }
 
 .ribbon {
-    height: 10px;
-    width: 100%;
     background: rgb(247,107,28); /* Old browsers */
     background: -moz-linear-gradient(left,  rgba(247,107,28,1) 0%, rgba(250,217,97,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(247,107,28,1)), color-stop(100%,rgba(250,217,97,1))); /* Chrome,Safari4+ */
@@ -73,11 +73,16 @@
     background: -ms-linear-gradient(left,  rgba(247,107,28,1) 0%,rgba(250,217,97,1) 100%); /* IE10+ */
     background: linear-gradient(to right,  rgba(247,107,28,1) 0%,rgba(250,217,97,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f76b1c', endColorstr='#fad961',GradientType=1 ); /* IE6-9 */
+    padding: 30px 0;
 }
 
 /* Utility */
 .source-ss-pro {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica;
+}
+
+.anonymous-pro {
+    font-family: 'Anonymous Pro', 'Helvetica Neue', Helvetica;
 }
 
 .dark-gray {
@@ -92,6 +97,6 @@
     color: #F5A623;
 }
 
-.mt100px {
-    margin-top: 100px;
+.full-width {
+    width: 100%;
 }
