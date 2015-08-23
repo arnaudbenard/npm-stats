@@ -8,8 +8,9 @@ body {
 
 /* Titles */
 .h1 {
-    font-size: 4.0rem;
-    margin: 0;
+    font-size: 3.3rem;
+    margin-top: 0;
+    margin-bottom: 0;
     font-weight: 400;
 }
 
@@ -59,8 +60,8 @@ body {
 
 .appicon {
     background: url('appicon.jpg');
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     background-size: cover;
 }
 
